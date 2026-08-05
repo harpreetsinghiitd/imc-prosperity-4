@@ -1,0 +1,75 @@
+{
+  "round": 1,
+  "status": "FINISHED",
+  "final_score": 99311.52734375,
+  "coverage": {
+    "activity_rows": 20000,
+    "days": [
+      1
+    ],
+    "timestamp_start": 0,
+    "timestamp_end": 999900,
+    "timestamp_count": 10000
+  },
+  "graph": {
+    "points": 500,
+    "timestamp_start": 0,
+    "timestamp_end": 998000,
+    "checkpoints": {
+      "0": 0.0,
+      "250000": 24625.1875,
+      "500000": 49581.21875,
+      "750000": 74498.53125,
+      "998000": 99097.1796875
+    },
+    "minimum": {
+      "timestamp": 2000,
+      "value": -404.2578125
+    },
+    "maximum": {
+      "timestamp": 998000,
+      "value": 99097.1796875
+    }
+  },
+  "all_trade_events": 1142,
+  "submission_fill_events": 728,
+  "submission_fill_volume": 4237,
+  "submission_fill_coverage": {
+    "timestamp_start": 0,
+    "timestamp_end": 999800
+  },
+  "tick_log_records": 10000,
+  "products": [
+    {
+      "symbol": "ASH_COATED_OSMIUM",
+      "final_profit": 19908.52734375,
+      "ending_position": 5,
+      "fill_events": 720,
+      "buy_volume": 2081,
+      "sell_volume": 2076
+    },
+    {
+      "symbol": "INTARIAN_PEPPER_ROOT",
+      "final_profit": 79403.0,
+      "ending_position": 80,
+      "fill_events": 8,
+      "buy_volume": 80,
+      "sell_volume": 0
+    }
+  ],
+  "ending_positions": {
+    "ASH_COATED_OSMIUM": 5,
+    "INTARIAN_PEPPER_ROOT": 80,
+    "XIRECS": -1070647
+  },
+  "source_files": {
+    "result.json": {
+      "bytes": 1620308,
+      "sha256": "f41f7877dfe290f664f8ad6f3138cbe2b2ba9d7d57446d3c0db64a4bfa0cdd86"
+    },
+    "submission.log.json": {
+      "bytes": 2276390,
+      "sha256": "cda56ef2f6e0d54f1b8643fdab3dab8aaaf3c06c312ce7cfcda4e5c59ed77653"
+    }
+  }
+}

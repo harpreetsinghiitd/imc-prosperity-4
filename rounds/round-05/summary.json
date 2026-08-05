@@ -1,0 +1,503 @@
+{
+  "round": 5,
+  "status": "FINISHED",
+  "final_score": 551448.345703125,
+  "coverage": {
+    "activity_rows": 500000,
+    "days": [
+      5
+    ],
+    "timestamp_start": 0,
+    "timestamp_end": 999900,
+    "timestamp_count": 10000
+  },
+  "graph": {
+    "points": 500,
+    "timestamp_start": 0,
+    "timestamp_end": 998000,
+    "checkpoints": {
+      "0": 0.0,
+      "250000": 151327.1044921875,
+      "500000": 309792.357421875,
+      "750000": 451420.54248046875,
+      "998000": 556358.93359375
+    },
+    "minimum": {
+      "timestamp": 4000,
+      "value": -7088.38427734375
+    },
+    "maximum": {
+      "timestamp": 990000,
+      "value": 560663.71875
+    }
+  },
+  "all_trade_events": 16124,
+  "submission_fill_events": 8810,
+  "submission_fill_volume": 33181,
+  "submission_fill_coverage": {
+    "timestamp_start": 0,
+    "timestamp_end": 999900
+  },
+  "tick_log_records": 10000,
+  "products": [
+    {
+      "symbol": "GALAXY_SOUNDS_BLACK_HOLES",
+      "final_profit": -2313.453125,
+      "ending_position": 4,
+      "fill_events": 621,
+      "buy_volume": 556,
+      "sell_volume": 552
+    },
+    {
+      "symbol": "GALAXY_SOUNDS_DARK_MATTER",
+      "final_profit": -5400.08984375,
+      "ending_position": 4,
+      "fill_events": 599,
+      "buy_volume": 536,
+      "sell_volume": 532
+    },
+    {
+      "symbol": "GALAXY_SOUNDS_PLANETARY_RINGS",
+      "final_profit": -6549.359375,
+      "ending_position": 10,
+      "fill_events": 8,
+      "buy_volume": 14,
+      "sell_volume": 4
+    },
+    {
+      "symbol": "GALAXY_SOUNDS_SOLAR_FLAMES",
+      "final_profit": 2686.1171875,
+      "ending_position": 8,
+      "fill_events": 9,
+      "buy_volume": 12,
+      "sell_volume": 4
+    },
+    {
+      "symbol": "GALAXY_SOUNDS_SOLAR_WINDS",
+      "final_profit": -2714.171875,
+      "ending_position": -9,
+      "fill_events": 4,
+      "buy_volume": 0,
+      "sell_volume": 9
+    },
+    {
+      "symbol": "MICROCHIP_CIRCLE",
+      "final_profit": -4309.25390625,
+      "ending_position": -5,
+      "fill_events": 25,
+      "buy_volume": 50,
+      "sell_volume": 55
+    },
+    {
+      "symbol": "MICROCHIP_OVAL",
+      "final_profit": -2649.40625,
+      "ending_position": -10,
+      "fill_events": 2,
+      "buy_volume": 0,
+      "sell_volume": 10
+    },
+    {
+      "symbol": "MICROCHIP_RECTANGLE",
+      "final_profit": -5981.0,
+      "ending_position": 0,
+      "fill_events": 67,
+      "buy_volume": 69,
+      "sell_volume": 69
+    },
+    {
+      "symbol": "MICROCHIP_SQUARE",
+      "final_profit": 3137.6875,
+      "ending_position": 10,
+      "fill_events": 2,
+      "buy_volume": 10,
+      "sell_volume": 0
+    },
+    {
+      "symbol": "MICROCHIP_TRIANGLE",
+      "final_profit": -6268.85546875,
+      "ending_position": 4,
+      "fill_events": 183,
+      "buy_volume": 183,
+      "sell_volume": 179
+    },
+    {
+      "symbol": "OXYGEN_SHAKE_CHOCOLATE",
+      "final_profit": 582418.0,
+      "ending_position": 0,
+      "fill_events": 1408,
+      "buy_volume": 8016,
+      "sell_volume": 8016
+    },
+    {
+      "symbol": "OXYGEN_SHAKE_EVENING_BREATH",
+      "final_profit": -940.0,
+      "ending_position": 0,
+      "fill_events": 202,
+      "buy_volume": 206,
+      "sell_volume": 206
+    },
+    {
+      "symbol": "OXYGEN_SHAKE_GARLIC",
+      "final_profit": 13821.0,
+      "ending_position": 0,
+      "fill_events": 241,
+      "buy_volume": 287,
+      "sell_volume": 287
+    },
+    {
+      "symbol": "OXYGEN_SHAKE_MINT",
+      "final_profit": 0.0,
+      "ending_position": 0,
+      "fill_events": 0,
+      "buy_volume": 0,
+      "sell_volume": 0
+    },
+    {
+      "symbol": "OXYGEN_SHAKE_MORNING_BREATH",
+      "final_profit": 0.0,
+      "ending_position": 0,
+      "fill_events": 0,
+      "buy_volume": 0,
+      "sell_volume": 0
+    },
+    {
+      "symbol": "PANEL_1X2",
+      "final_profit": 2867.0,
+      "ending_position": 0,
+      "fill_events": 202,
+      "buy_volume": 206,
+      "sell_volume": 206
+    },
+    {
+      "symbol": "PANEL_1X4",
+      "final_profit": 3625.0,
+      "ending_position": 0,
+      "fill_events": 244,
+      "buy_volume": 289,
+      "sell_volume": 289
+    },
+    {
+      "symbol": "PANEL_2X2",
+      "final_profit": 0.0,
+      "ending_position": 0,
+      "fill_events": 0,
+      "buy_volume": 0,
+      "sell_volume": 0
+    },
+    {
+      "symbol": "PANEL_2X4",
+      "final_profit": -1432.0,
+      "ending_position": 0,
+      "fill_events": 235,
+      "buy_volume": 276,
+      "sell_volume": 276
+    },
+    {
+      "symbol": "PANEL_4X4",
+      "final_profit": -1011.0,
+      "ending_position": 0,
+      "fill_events": 200,
+      "buy_volume": 204,
+      "sell_volume": 204
+    },
+    {
+      "symbol": "PEBBLES_L",
+      "final_profit": 2927.0,
+      "ending_position": 0,
+      "fill_events": 159,
+      "buy_volume": 234,
+      "sell_volume": 234
+    },
+    {
+      "symbol": "PEBBLES_M",
+      "final_profit": -15718.8125,
+      "ending_position": 10,
+      "fill_events": 110,
+      "buy_volume": 545,
+      "sell_volume": 535
+    },
+    {
+      "symbol": "PEBBLES_S",
+      "final_profit": -24741.1484375,
+      "ending_position": -10,
+      "fill_events": 8,
+      "buy_volume": 8,
+      "sell_volume": 18
+    },
+    {
+      "symbol": "PEBBLES_XL",
+      "final_profit": -21312.34375,
+      "ending_position": -10,
+      "fill_events": 233,
+      "buy_volume": 375,
+      "sell_volume": 385
+    },
+    {
+      "symbol": "PEBBLES_XS",
+      "final_profit": -3443.1171875,
+      "ending_position": -10,
+      "fill_events": 1,
+      "buy_volume": 0,
+      "sell_volume": 10
+    },
+    {
+      "symbol": "ROBOT_DISHES",
+      "final_profit": 0.0,
+      "ending_position": 0,
+      "fill_events": 0,
+      "buy_volume": 0,
+      "sell_volume": 0
+    },
+    {
+      "symbol": "ROBOT_IRONING",
+      "final_profit": 930.0,
+      "ending_position": 0,
+      "fill_events": 240,
+      "buy_volume": 284,
+      "sell_volume": 284
+    },
+    {
+      "symbol": "ROBOT_LAUNDRY",
+      "final_profit": 3560.0,
+      "ending_position": 0,
+      "fill_events": 14,
+      "buy_volume": 33,
+      "sell_volume": 33
+    },
+    {
+      "symbol": "ROBOT_MOPPING",
+      "final_profit": -4771.0,
+      "ending_position": 0,
+      "fill_events": 202,
+      "buy_volume": 206,
+      "sell_volume": 206
+    },
+    {
+      "symbol": "ROBOT_VACUUMING",
+      "final_profit": 2205.0,
+      "ending_position": 0,
+      "fill_events": 40,
+      "buy_volume": 45,
+      "sell_volume": 45
+    },
+    {
+      "symbol": "SLEEP_POD_COTTON",
+      "final_profit": 5711.765625,
+      "ending_position": 10,
+      "fill_events": 281,
+      "buy_volume": 305,
+      "sell_volume": 295
+    },
+    {
+      "symbol": "SLEEP_POD_LAMB_WOOL",
+      "final_profit": 152.9921875,
+      "ending_position": -4,
+      "fill_events": 439,
+      "buy_volume": 383,
+      "sell_volume": 387
+    },
+    {
+      "symbol": "SLEEP_POD_NYLON",
+      "final_profit": 7306.5859375,
+      "ending_position": -10,
+      "fill_events": 55,
+      "buy_volume": 48,
+      "sell_volume": 58
+    },
+    {
+      "symbol": "SLEEP_POD_POLYESTER",
+      "final_profit": 11869.640625,
+      "ending_position": 10,
+      "fill_events": 314,
+      "buy_volume": 284,
+      "sell_volume": 274
+    },
+    {
+      "symbol": "SLEEP_POD_SUEDE",
+      "final_profit": -5958.0078125,
+      "ending_position": 10,
+      "fill_events": 312,
+      "buy_volume": 282,
+      "sell_volume": 272
+    },
+    {
+      "symbol": "SNACKPACK_CHOCOLATE",
+      "final_profit": 1584.375,
+      "ending_position": 10,
+      "fill_events": 4,
+      "buy_volume": 40,
+      "sell_volume": 30
+    },
+    {
+      "symbol": "SNACKPACK_PISTACHIO",
+      "final_profit": 9082.0,
+      "ending_position": 0,
+      "fill_events": 239,
+      "buy_volume": 284,
+      "sell_volume": 284
+    },
+    {
+      "symbol": "SNACKPACK_RASPBERRY",
+      "final_profit": -430.0,
+      "ending_position": 0,
+      "fill_events": 10,
+      "buy_volume": 50,
+      "sell_volume": 50
+    },
+    {
+      "symbol": "SNACKPACK_STRAWBERRY",
+      "final_profit": 1820.0,
+      "ending_position": 0,
+      "fill_events": 12,
+      "buy_volume": 60,
+      "sell_volume": 60
+    },
+    {
+      "symbol": "SNACKPACK_VANILLA",
+      "final_profit": 306.9375,
+      "ending_position": 10,
+      "fill_events": 5,
+      "buy_volume": 50,
+      "sell_volume": 40
+    },
+    {
+      "symbol": "TRANSLATOR_ASTRO_BLACK",
+      "final_profit": 1417.0,
+      "ending_position": 0,
+      "fill_events": 129,
+      "buy_volume": 154,
+      "sell_volume": 154
+    },
+    {
+      "symbol": "TRANSLATOR_ECLIPSE_CHARCOAL",
+      "final_profit": -14877.0703125,
+      "ending_position": 10,
+      "fill_events": 263,
+      "buy_volume": 316,
+      "sell_volume": 306
+    },
+    {
+      "symbol": "TRANSLATOR_GRAPHITE_MIST",
+      "final_profit": 1080.0,
+      "ending_position": 0,
+      "fill_events": 202,
+      "buy_volume": 206,
+      "sell_volume": 206
+    },
+    {
+      "symbol": "TRANSLATOR_SPACE_GRAY",
+      "final_profit": 10977.8359375,
+      "ending_position": 10,
+      "fill_events": 266,
+      "buy_volume": 317,
+      "sell_volume": 307
+    },
+    {
+      "symbol": "TRANSLATOR_VOID_BLUE",
+      "final_profit": -4849.0,
+      "ending_position": 0,
+      "fill_events": 236,
+      "buy_volume": 277,
+      "sell_volume": 277
+    },
+    {
+      "symbol": "UV_VISOR_AMBER",
+      "final_profit": -2286.71875,
+      "ending_position": 7,
+      "fill_events": 143,
+      "buy_volume": 163,
+      "sell_volume": 156
+    },
+    {
+      "symbol": "UV_VISOR_MAGENTA",
+      "final_profit": -1880.140625,
+      "ending_position": -8,
+      "fill_events": 111,
+      "buy_volume": 133,
+      "sell_volume": 141
+    },
+    {
+      "symbol": "UV_VISOR_ORANGE",
+      "final_profit": 3965.76171875,
+      "ending_position": 1,
+      "fill_events": 227,
+      "buy_volume": 270,
+      "sell_volume": 269
+    },
+    {
+      "symbol": "UV_VISOR_RED",
+      "final_profit": 11240.8515625,
+      "ending_position": 5,
+      "fill_events": 81,
+      "buy_volume": 99,
+      "sell_volume": 94
+    },
+    {
+      "symbol": "UV_VISOR_YELLOW",
+      "final_profit": 6591.744140625,
+      "ending_position": -2,
+      "fill_events": 222,
+      "buy_volume": 253,
+      "sell_volume": 255
+    }
+  ],
+  "ending_positions": {
+    "GALAXY_SOUNDS_BLACK_HOLES": 4,
+    "GALAXY_SOUNDS_DARK_MATTER": 4,
+    "GALAXY_SOUNDS_PLANETARY_RINGS": 10,
+    "GALAXY_SOUNDS_SOLAR_FLAMES": 8,
+    "GALAXY_SOUNDS_SOLAR_WINDS": -9,
+    "MICROCHIP_CIRCLE": -5,
+    "MICROCHIP_OVAL": -10,
+    "MICROCHIP_RECTANGLE": 0,
+    "MICROCHIP_SQUARE": 10,
+    "MICROCHIP_TRIANGLE": 4,
+    "OXYGEN_SHAKE_CHOCOLATE": 0,
+    "OXYGEN_SHAKE_EVENING_BREATH": 0,
+    "OXYGEN_SHAKE_GARLIC": 0,
+    "PANEL_1X2": 0,
+    "PANEL_1X4": 0,
+    "PANEL_2X4": 0,
+    "PANEL_4X4": 0,
+    "PEBBLES_L": 0,
+    "PEBBLES_M": 10,
+    "PEBBLES_S": -10,
+    "PEBBLES_XL": -10,
+    "PEBBLES_XS": -10,
+    "ROBOT_IRONING": 0,
+    "ROBOT_LAUNDRY": 0,
+    "ROBOT_MOPPING": 0,
+    "ROBOT_VACUUMING": 0,
+    "SLEEP_POD_COTTON": 10,
+    "SLEEP_POD_LAMB_WOOL": -4,
+    "SLEEP_POD_NYLON": -10,
+    "SLEEP_POD_POLYESTER": 10,
+    "SLEEP_POD_SUEDE": 10,
+    "SNACKPACK_CHOCOLATE": 10,
+    "SNACKPACK_PISTACHIO": 0,
+    "SNACKPACK_RASPBERRY": 0,
+    "SNACKPACK_STRAWBERRY": 0,
+    "SNACKPACK_VANILLA": 10,
+    "TRANSLATOR_ASTRO_BLACK": 0,
+    "TRANSLATOR_ECLIPSE_CHARCOAL": 10,
+    "TRANSLATOR_GRAPHITE_MIST": 0,
+    "TRANSLATOR_SPACE_GRAY": 10,
+    "TRANSLATOR_VOID_BLUE": 0,
+    "UV_VISOR_AMBER": 7,
+    "UV_VISOR_MAGENTA": -8,
+    "UV_VISOR_ORANGE": 1,
+    "UV_VISOR_RED": 5,
+    "UV_VISOR_YELLOW": -2,
+    "XIRECS": -6479
+  },
+  "source_files": {
+    "result.json": {
+      "bytes": 41893566,
+      "sha256": "858a36a25417f272c3a3a36914b6c7852dff50bc6033417a09ad19d145e3ff30"
+    },
+    "submission.log.json": {
+      "bytes": 47334137,
+      "sha256": "06b8faba11349698dc0fec5656bb3d48bba87539f20ba349fcec41c86d24a123"
+    }
+  }
+}

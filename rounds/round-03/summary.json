@@ -1,0 +1,163 @@
+{
+  "round": 3,
+  "status": "FINISHED",
+  "final_score": 33767.517578125,
+  "coverage": {
+    "activity_rows": 120000,
+    "days": [
+      3
+    ],
+    "timestamp_start": 0,
+    "timestamp_end": 999900,
+    "timestamp_count": 10000
+  },
+  "graph": {
+    "points": 500,
+    "timestamp_start": 0,
+    "timestamp_end": 998000,
+    "checkpoints": {
+      "0": 0.0,
+      "250000": 1890.49755859375,
+      "500000": -20231.62255859375,
+      "750000": 22274.8134765625,
+      "998000": 36400.20495605469
+    },
+    "minimum": {
+      "timestamp": 504000,
+      "value": -24793.84033203125
+    },
+    "maximum": {
+      "timestamp": 950000,
+      "value": 74019.88873291016
+    }
+  },
+  "all_trade_events": 5419,
+  "submission_fill_events": 4026,
+  "submission_fill_volume": 25817,
+  "submission_fill_coverage": {
+    "timestamp_start": 0,
+    "timestamp_end": 999900
+  },
+  "tick_log_records": 10000,
+  "products": [
+    {
+      "symbol": "HYDROGEL_PACK",
+      "final_profit": 27719.0,
+      "ending_position": 0,
+      "fill_events": 187,
+      "buy_volume": 1129,
+      "sell_volume": 1129
+    },
+    {
+      "symbol": "VELVETFRUIT_EXTRACT",
+      "final_profit": 14130.0,
+      "ending_position": 0,
+      "fill_events": 78,
+      "buy_volume": 660,
+      "sell_volume": 660
+    },
+    {
+      "symbol": "VEV_4000",
+      "final_profit": 2705.017333984375,
+      "ending_position": 2,
+      "fill_events": 159,
+      "buy_volume": 163,
+      "sell_volume": 161
+    },
+    {
+      "symbol": "VEV_4500",
+      "final_profit": 1999.017333984375,
+      "ending_position": 2,
+      "fill_events": 159,
+      "buy_volume": 163,
+      "sell_volume": 161
+    },
+    {
+      "symbol": "VEV_5000",
+      "final_profit": 22446.626953125,
+      "ending_position": 15,
+      "fill_events": 749,
+      "buy_volume": 2584,
+      "sell_volume": 2569
+    },
+    {
+      "symbol": "VEV_5100",
+      "final_profit": -4555.765625,
+      "ending_position": 295,
+      "fill_events": 608,
+      "buy_volume": 2182,
+      "sell_volume": 1887
+    },
+    {
+      "symbol": "VEV_5200",
+      "final_profit": -10138.466796875,
+      "ending_position": 294,
+      "fill_events": 545,
+      "buy_volume": 1873,
+      "sell_volume": 1579
+    },
+    {
+      "symbol": "VEV_5300",
+      "final_profit": -11864.9794921875,
+      "ending_position": 293,
+      "fill_events": 514,
+      "buy_volume": 1644,
+      "sell_volume": 1351
+    },
+    {
+      "symbol": "VEV_5400",
+      "final_profit": -5939.0712890625,
+      "ending_position": 289,
+      "fill_events": 513,
+      "buy_volume": 1648,
+      "sell_volume": 1359
+    },
+    {
+      "symbol": "VEV_5500",
+      "final_profit": -2733.86083984375,
+      "ending_position": 289,
+      "fill_events": 514,
+      "buy_volume": 1602,
+      "sell_volume": 1313
+    },
+    {
+      "symbol": "VEV_6000",
+      "final_profit": 0.0,
+      "ending_position": 0,
+      "fill_events": 0,
+      "buy_volume": 0,
+      "sell_volume": 0
+    },
+    {
+      "symbol": "VEV_6500",
+      "final_profit": 0.0,
+      "ending_position": 0,
+      "fill_events": 0,
+      "buy_volume": 0,
+      "sell_volume": 0
+    }
+  ],
+  "ending_positions": {
+    "HYDROGEL_PACK": 0,
+    "VELVETFRUIT_EXTRACT": 0,
+    "VEV_4000": 2,
+    "VEV_4500": 2,
+    "VEV_5000": 15,
+    "VEV_5100": 295,
+    "VEV_5200": 294,
+    "VEV_5300": 293,
+    "VEV_5400": 289,
+    "VEV_5500": 289,
+    "XIRECS": -45542
+  },
+  "source_files": {
+    "result.json": {
+      "bytes": 7599020,
+      "sha256": "efb8c69191fcb38a7314b7e339755608df67288e09b3c16bef6cdd4adfd496a7"
+    },
+    "submission.log.json": {
+      "bytes": 8765268,
+      "sha256": "ebca480afc891fd29981553030db653578152fe81d9692593ee2edcc8ce8bb4e"
+    }
+  }
+}
