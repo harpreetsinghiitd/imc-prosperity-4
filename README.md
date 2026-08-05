@@ -111,7 +111,8 @@ With 50 active products, I organized the market into separate engines for Transl
 │   │   └── capsule/README.md   # Why raw exports remain local-only
 ├── scripts/
 │   ├── clean_sources.py        # Comment/docstring removal with AST checks
-│   ├── analyze_round_one.py     # Deep Round 1 capsule analysis and replay
+│   ├── analyze_round_one.py    # Deep Round 1 capsule analysis and replay
+│   ├── analyze_round_two.py    # Deep Round 2 model and decision replay
 │   ├── summarize_capsules.py   # Local raw export → sanitized summary
 │   ├── generate_figures.py     # Summary/capsule → SVG figures
 │   ├── generate_results_doc.py # Summary → detailed results report
@@ -128,6 +129,7 @@ python -m compileall -q rounds scripts
 python scripts/clean_sources.py --check rounds/round-*/trader.py
 python scripts/verify_repository.py
 python scripts/analyze_round_one.py
+python scripts/analyze_round_two.py
 ```
 
 If the local raw exports are present in each `capsule/` directory, the summaries and figures can also be regenerated:
