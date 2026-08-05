@@ -16,7 +16,7 @@ The useful story is the progression: a product-specific model in Round 1, richer
 |---:|---:|---:|---|
 | [1](rounds/round-01/README.md) | 2 | 99,311.53 | Bot-level fair value + directional carry |
 | [2](rounds/round-02/README.md) | 2 | **96,567.54** | Microstructure, trend regression, and inventory-aware execution |
-| [3](rounds/round-03/README.md) | 12 | 33,767.52 | Mean reversion + calibrated voucher fair values |
+| [3](rounds/round-03/README.md) | 12 | 33,767.52 | Mean reversion + wall-mid and local-delta vouchers |
 | [4](rounds/round-04/README.md) | 12 | 153,493.93 | Stable midpoints, counterparty flow, and volatility filtering |
 | [5](rounds/round-05/README.md) | 50 | 551,448.35 | Product-family engines and opening-regime signals |
 | **Capsule-derived total** |  | **934,588.86** |  |
@@ -67,7 +67,7 @@ These upstream tools are acknowledged here rather than copied into this reposito
 | Research question | Round 1 | Round 2 | Round 3 | Round 4 | Round 5 |
 |---|---|---|---|---|---|
 | Fair value | Bot signatures / linear path | EMA, microprice, OBI, rolling trend | OU anchors, wall mid, linear delta | Stable mid, flow-adjusted EMA, IV surface | Family-specific microprice, trends, opening regimes |
-| Execution | Take, clear, join/improve | Multi-level sweeps, ladders, scored quotes | Deviation-scaled trades and passive options | Zone targeting plus filtered voucher trades | Layered active targets and passive family engines |
+| Execution | Take, clear, join/improve | Multi-level sweeps, ladders, scored quotes | Threshold takers plus two-sided wall quotes | Zone targeting plus filtered voucher trades | Layered active targets and passive family engines |
 | Inventory | Threshold quote skew | Reservation price and target-position penalty | Per-product caps and portfolio delta hedge | Aggressive-inventory tracking and zones | Soft targets, stop states, EOD flattening, final limiter |
 | Main lesson | Separate product behavior | Make execution adapt to state | Coordinate portfolio exposure | Cleaner signals improved consistency | Modular design makes breadth manageable |
 
@@ -81,9 +81,9 @@ I treated Ash Coated Osmium as a microstructure-driven mean-reverter and Intaria
 
 I made Osmium more adaptive and gave Pepper Root a rolling linear trend, imbalance adjustment, dip sweeping, and passive quote scoring. The combined system finished with a positive score of 96,567.54 XIRECS. [Read the Round 2 narrative →](rounds/round-02/README.md)
 
-### Round 3 — from spot products to a voucher portfolio
+### Round 3 — from spot products to a delta-aware voucher portfolio
 
-The problem expanded to 12 products. I combined slow mean reversion in the underlyings with wall-mid execution, locally linear voucher fair values, parity logic, and a portfolio delta hedge. [Read the Round 3 narrative →](rounds/round-03/README.md)
+The problem expanded to 12 observed markets and 10 active routes. I combined slow-center mean reversion, visible book-envelope execution, strike-specific local delta models, lifecycle scaling, and a portfolio-delta circuit breaker. [Read the Round 3 narrative →](rounds/round-03/README.md)
 
 ### Round 4 — make fair value less noisy and more informed
 
@@ -113,6 +113,7 @@ With 50 active products, I organized the market into separate engines for Transl
 │   ├── clean_sources.py        # Comment/docstring removal with AST checks
 │   ├── analyze_round_one.py    # Deep Round 1 capsule analysis and replay
 │   ├── analyze_round_two.py    # Deep Round 2 model and decision replay
+│   ├── analyze_round_three.py  # Deep Round 3 portfolio and fill replay
 │   ├── summarize_capsules.py   # Local raw export → sanitized summary
 │   ├── generate_figures.py     # Summary/capsule → SVG figures
 │   ├── generate_results_doc.py # Summary → detailed results report
@@ -130,6 +131,7 @@ python scripts/clean_sources.py --check rounds/round-*/trader.py
 python scripts/verify_repository.py
 python scripts/analyze_round_one.py
 python scripts/analyze_round_two.py
+python scripts/analyze_round_three.py
 ```
 
 If the local raw exports are present in each `capsule/` directory, the summaries and figures can also be regenerated:

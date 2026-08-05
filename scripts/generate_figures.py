@@ -294,6 +294,213 @@ def round_two_research_chart(rounds: list[tuple[Path, dict, dict]]) -> None:
     save(fig, "round-02-research.svg")
 
 
+def round_three_research_chart(rounds: list[tuple[Path, dict, dict]]) -> None:
+    round_dir, _, result = next(item for item in rounds if item[1]["round"] == 3)
+    rows = list(csv.DictReader(io.StringIO(result["activitiesLog"]), delimiter=";"))
+    by_product = defaultdict(list)
+    for row in rows:
+        by_product[row["product"]].append(row)
+
+    hydrogel = by_product["HYDROGEL_PACK"]
+    velvetfruit = by_product["VELVETFRUIT_EXTRACT"]
+    vev_5000 = by_product["VEV_5000"]
+    timestamps = [int(row["timestamp"]) for row in hydrogel]
+    progress_all = [timestamp / 10_000 for timestamp in timestamps]
+    hydrogel_mid = [float(row["mid_price"]) for row in hydrogel]
+    velvetfruit_mid = [float(row["mid_price"]) for row in velvetfruit]
+    vev_5000_mid = [float(row["mid_price"]) for row in vev_5000]
+
+    hydrogel_fair = []
+    fair = 9_985.0
+    for midpoint in hydrogel_mid:
+        fair = round(0.0002 * midpoint + 0.9998 * fair, 2)
+        hydrogel_fair.append(fair)
+    vev_5000_fair = [
+        0.6536 * midpoint - 3_176.2 for midpoint in velvetfruit_mid
+    ]
+
+    submission_log = json.loads(
+        (round_dir / "capsule" / "submission.log.json").read_text(encoding="utf-8")
+    )
+    position_changes = defaultdict(lambda: defaultdict(int))
+    for trade in submission_log["tradeHistory"]:
+        if trade.get("buyer") != "SUBMISSION" and trade.get("seller") != "SUBMISSION":
+            continue
+        timestamp = int(trade["timestamp"])
+        product = trade["symbol"]
+        quantity = int(trade["quantity"])
+        if trade.get("buyer") == "SUBMISSION":
+            position_changes[timestamp][product] += quantity
+        if trade.get("seller") == "SUBMISSION":
+            position_changes[timestamp][product] -= quantity
+
+    delta_estimates = {
+        "VEV_4000": 1.0,
+        "VEV_4500": 0.82,
+        "VEV_5000": 0.6536,
+        "VEV_5100": 0.5774,
+        "VEV_5200": 0.4367,
+        "VEV_5300": 0.2727,
+        "VEV_5400": 0.1289,
+        "VEV_5500": 0.0549,
+        "VEV_6000": 0.01,
+        "VEV_6500": 0.001,
+    }
+    position = defaultdict(int)
+    portfolio_delta = []
+    for timestamp in timestamps:
+        for product, change in position_changes[timestamp].items():
+            position[product] += change
+        portfolio_delta.append(
+            position["VELVETFRUIT_EXTRACT"]
+            + sum(
+                position[product] * delta
+                for product, delta in delta_estimates.items()
+            )
+        )
+
+    sample = range(0, len(timestamps), 10)
+    progress = [progress_all[index] for index in sample]
+    fig, axes = plt.subplots(2, 2, figsize=(13, 9), constrained_layout=True)
+
+    axes[0, 0].plot(
+        progress,
+        [hydrogel_mid[index] for index in sample],
+        color=COLORS["blue"],
+        linewidth=1.15,
+        label="Observed midpoint",
+    )
+    axes[0, 0].plot(
+        progress,
+        [hydrogel_fair[index] for index in sample],
+        color=COLORS["orange"],
+        linewidth=1.8,
+        label="Persisted 0.02% EMA fair",
+    )
+    axes[0, 0].plot(
+        progress,
+        [hydrogel_fair[index] + 40 for index in sample],
+        color=COLORS["red"],
+        linewidth=1,
+        linestyle="--",
+        label="Entry band: fair ±40",
+    )
+    axes[0, 0].plot(
+        progress,
+        [hydrogel_fair[index] - 40 for index in sample],
+        color=COLORS["red"],
+        linewidth=1,
+        linestyle="--",
+    )
+    axes[0, 0].set_title("Hydrogel: slow center, wide entry band")
+    axes[0, 0].set_xlabel("Round progress (%)")
+    axes[0, 0].set_ylabel("Price (XIRECS)")
+    axes[0, 0].legend(frameon=False, fontsize=9)
+    axes[0, 0].grid(color=COLORS["grid"], linewidth=0.6)
+
+    axes[0, 1].plot(
+        progress,
+        [velvetfruit_mid[index] for index in sample],
+        color=COLORS["blue"],
+        linewidth=1.2,
+        label="Observed midpoint",
+    )
+    axes[0, 1].axhline(
+        5_249,
+        color=COLORS["orange"],
+        linewidth=1.8,
+        label="Fixed center: 5,249",
+    )
+    axes[0, 1].axhline(
+        5_269,
+        color=COLORS["red"],
+        linewidth=1,
+        linestyle="--",
+        label="Entry band: center ±20",
+    )
+    axes[0, 1].axhline(
+        5_229,
+        color=COLORS["red"],
+        linewidth=1,
+        linestyle="--",
+    )
+    axes[0, 1].set_title("Velvetfruit: directional mean reversion")
+    axes[0, 1].set_xlabel("Round progress (%)")
+    axes[0, 1].set_ylabel("Price (XIRECS)")
+    axes[0, 1].legend(frameon=False, fontsize=9)
+    axes[0, 1].grid(color=COLORS["grid"], linewidth=0.6)
+
+    axes[1, 0].plot(
+        progress,
+        [vev_5000_mid[index] for index in sample],
+        color=COLORS["blue"],
+        linewidth=1.2,
+        label="Observed VEV 5000 midpoint",
+    )
+    axes[1, 0].plot(
+        progress,
+        [vev_5000_fair[index] for index in sample],
+        color=COLORS["orange"],
+        linewidth=1.8,
+        label="Code model: 0.6536 × spot − 3,176.2",
+    )
+    axes[1, 0].set_title("VEV 5000: local linear relative value")
+    axes[1, 0].set_xlabel("Round progress (%)")
+    axes[1, 0].set_ylabel("Voucher value (XIRECS)")
+    axes[1, 0].legend(frameon=False, fontsize=9)
+    axes[1, 0].grid(color=COLORS["grid"], linewidth=0.6)
+
+    axes[1, 1].plot(
+        progress,
+        [portfolio_delta[index] for index in sample],
+        color=COLORS["teal"],
+        linewidth=1.5,
+        label="Estimated portfolio delta",
+    )
+    axes[1, 1].axhline(
+        1_000,
+        color=COLORS["red"],
+        linewidth=1.2,
+        linestyle="--",
+        label="Emergency gate: ±1,000",
+    )
+    axes[1, 1].axhline(
+        -1_000,
+        color=COLORS["red"],
+        linewidth=1.2,
+        linestyle="--",
+    )
+    axes[1, 1].axhline(
+        500,
+        color=COLORS["orange"],
+        linewidth=1,
+        linestyle=":",
+        label="Post-hedge target: ±500",
+    )
+    axes[1, 1].axhline(
+        -500,
+        color=COLORS["orange"],
+        linewidth=1,
+        linestyle=":",
+    )
+    axes[1, 1].axvspan(
+        92,
+        100,
+        color=COLORS["grid"],
+        alpha=0.5,
+        label="Exposure scaling",
+    )
+    axes[1, 1].set_ylim(-1_100, 1_100)
+    axes[1, 1].set_title("Portfolio delta remained inside the emergency gate")
+    axes[1, 1].set_xlabel("Round progress (%)")
+    axes[1, 1].set_ylabel("Estimated delta")
+    axes[1, 1].legend(frameon=False, fontsize=8, ncol=2)
+    axes[1, 1].grid(color=COLORS["grid"], linewidth=0.6)
+
+    fig.suptitle("Round 3 research evidence", fontsize=16)
+    save(fig, "round-03-research.svg")
+
+
 def product_charts(rounds: list[tuple[Path, dict, dict]]) -> None:
     for _, summary, _ in rounds:
         products = sorted(summary["products"], key=lambda item: item["final_profit"])
@@ -328,8 +535,9 @@ def main() -> int:
     pnl_curve_chart(rounds)
     round_one_research_chart(rounds)
     round_two_research_chart(rounds)
+    round_three_research_chart(rounds)
     product_charts(rounds)
-    print(f"generated {len(rounds) + 4} figures in {ASSETS.relative_to(ROOT)}")
+    print(f"generated {len(rounds) + 5} figures in {ASSETS.relative_to(ROOT)}")
     return 0
 
 
