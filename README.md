@@ -6,7 +6,7 @@
 
 This repository tells the story of how my trading system evolved across all five rounds of IMC Prosperity 4. It contains the exact executable logic from each submitted strategy, cleaned of comments and docstrings, together with an evidence-based explanation of what I observed, what I believed, why I chose each model, how I expressed it in orders, and what the live results taught me.
 
-The useful story is the progression: a product-specific model in Round 1, richer microstructure in Round 2, derivatives and portfolio risk in Round 3, flow-aware valuation in Round 4, and a family-based system for 50 products in Round 5.
+The useful story is the progression: a product-specific model in Round 1, richer microstructure in Round 2, derivatives and portfolio risk in Round 3, a shared regime with layered confirmation in Round 4, and a family-based system for 50 products in Round 5.
 
 > Results below come directly from the supplied submission exports. Inferred research intent is labeled as a working hypothesis; measured outcomes come from the capsules.
 
@@ -17,7 +17,7 @@ The useful story is the progression: a product-specific model in Round 1, richer
 | [1](rounds/round-01/README.md) | 2 | 99,311.53 | Bot-level fair value + directional carry |
 | [2](rounds/round-02/README.md) | 2 | **96,567.54** | Microstructure, trend regression, and inventory-aware execution |
 | [3](rounds/round-03/README.md) | 12 | 33,767.52 | Mean reversion + wall-mid and local-delta vouchers |
-| [4](rounds/round-04/README.md) | 12 | 153,493.93 | Stable midpoints, counterparty flow, and volatility filtering |
+| [4](rounds/round-04/README.md) | 12 | 153,493.93 | Shared regime, bounded flow, and a Black–Scholes veto |
 | [5](rounds/round-05/README.md) | 50 | 551,448.35 | Product-family engines and opening-regime signals |
 | **Capsule-derived total** |  | **934,588.86** |  |
 
@@ -66,10 +66,10 @@ These upstream tools are acknowledged here rather than copied into this reposito
 
 | Research question | Round 1 | Round 2 | Round 3 | Round 4 | Round 5 |
 |---|---|---|---|---|---|
-| Fair value | Bot signatures / linear path | EMA, microprice, OBI, rolling trend | OU anchors, wall mid, linear delta | Stable mid, flow-adjusted EMA, IV surface | Family-specific microprice, trends, opening regimes |
-| Execution | Take, clear, join/improve | Multi-level sweeps, ladders, scored quotes | Threshold takers plus two-sided wall quotes | Zone targeting plus filtered voucher trades | Layered active targets and passive family engines |
-| Inventory | Threshold quote skew | Reservation price and target-position penalty | Per-product caps and portfolio delta hedge | Aggressive-inventory tracking and zones | Soft targets, stop states, EOD flattening, final limiter |
-| Main lesson | Separate product behavior | Make execution adapt to state | Coordinate portfolio exposure | Cleaner signals improved consistency | Modular design makes breadth manageable |
+| Fair value | Bot signatures / linear path | EMA, microprice, OBI, rolling trend | OU anchors, wall mid, linear delta | Outer-book EMA, bounded flow, common IV | Family-specific microprice, trends, opening regimes |
+| Execution | Take, clear, join/improve | Multi-level sweeps, ladders, scored quotes | Threshold takers plus two-sided wall quotes | Shared zone targets plus a theory veto | Layered active targets and passive family engines |
+| Inventory | Threshold quote skew | Reservation price and target-position penalty | Per-product caps and portfolio delta hedge | Intent counters and synchronized target zones | Soft targets, stop states, EOD flattening, final limiter |
+| Main lesson | Separate product behavior | Make execution adapt to state | Coordinate portfolio exposure | Bounded shared state coordinated the family | Modular design makes breadth manageable |
 
 ## Round-by-round research story
 
@@ -85,9 +85,9 @@ I made Osmium more adaptive and gave Pepper Root a rolling linear trend, imbalan
 
 The problem expanded to 12 observed markets and 10 active routes. I combined slow-center mean reversion, visible book-envelope execution, strike-specific local delta models, lifecycle scaling, and a portfolio-delta circuit breaker. [Read the Round 3 narrative →](rounds/round-03/README.md)
 
-### Round 4 — make fair value less noisy and more informed
+### Round 4 — coordinate the portfolio around one regime
 
-I moved Hydrogel to an outer-book stable midpoint, tracked aggressive inventory separately from passive market making, used selected counterparty flow to shift the underlying center, and filtered voucher trades against an implied-volatility surface. P&L rose to 153,493.93 XIRECS. [Read the Round 4 narrative →](rounds/round-04/README.md)
+I moved Hydrogel to a calmer outer-book observation, separated directional intent from passive quoting, and built one flow-adjusted Velvetfruit regime for the underlying and seven vouchers. A live six-strike implied-volatility consensus then gave Black–Scholes a narrow role: veto a theoretically inconsistent voucher direction, never create a trade by itself. Nine of ten active routes finished positive; the eight principal positive sleeves—Hydrogel, Velvetfruit, `VEV_4000`, and `VEV_4500`–`VEV_5300`—completed 58 / 58 profitable closed cycles; and P&L reached **153,493.93 XIRECS—4.55× Round 3**. [Read the Round 4 narrative →](rounds/round-04/README.md)
 
 ### Round 5 — scale by product family
 
@@ -114,6 +114,7 @@ With 50 active products, I organized the market into separate engines for Transl
 │   ├── analyze_round_one.py    # Deep Round 1 capsule analysis and replay
 │   ├── analyze_round_two.py    # Deep Round 2 model and decision replay
 │   ├── analyze_round_three.py  # Deep Round 3 portfolio and fill replay
+│   ├── analyze_round_four.py   # Deep Round 4 flow, regime, and IV replay
 │   ├── summarize_capsules.py   # Local raw export → sanitized summary
 │   ├── generate_figures.py     # Summary/capsule → SVG figures
 │   ├── generate_results_doc.py # Summary → detailed results report
@@ -132,6 +133,7 @@ python scripts/verify_repository.py
 python scripts/analyze_round_one.py
 python scripts/analyze_round_two.py
 python scripts/analyze_round_three.py
+python scripts/analyze_round_four.py
 ```
 
 If the local raw exports are present in each `capsule/` directory, the summaries and figures can also be regenerated:
